@@ -1,6 +1,6 @@
 function sumFirstLast(array) {
     let firstElement = array[0];
-    let lastElement = array.pop;
+    let lastElement = array.pop();
 
     return firstElement + lastElement;
 
