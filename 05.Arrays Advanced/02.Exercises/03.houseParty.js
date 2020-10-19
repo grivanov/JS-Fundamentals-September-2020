@@ -24,7 +24,7 @@ function houseParty(input) {
     for (let el of guestList) {
         console.log(el);
     }
-
+    
 }
 
 houseParty(['Tom is going!',
