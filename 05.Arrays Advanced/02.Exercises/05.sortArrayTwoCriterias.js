@@ -1,27 +1,52 @@
 function sortArrayTwoCriterias(inputArray) {
     let sortedArray = inputArray.slice();
     let equalElements = [];
+    let newArr = [];
 
+    sortedArray.sort((a, b) => a.length - b.length);
+    console.log(sortedArray.join(' '));
 
-    for (let i = 0; i < sortedArray.length; i++) {
-        if (sortedArray[i].length == sortedArray[i + 1].length) {
-            equalElements.push(sortedArray[i], sortedArray[i + 1]);
-            let index = equalElements.indexOf(equalElements[i], 0)
-            equalElements.splice(index, 1);
-            equalElements.sort((a, b) => a.localeCompare(b));
+    for (let i = 0; i <= sortedArray.length; i++) {
+
+        if (sortedArray.length == 1) {
+            newArr.push(sortedArray[0]);
         } else {
-            equalElements.push(sortedArray[i + 1]);
-            let index = equalElements.indexOf(equalElements[i], 0)
-            equalElements.splice(index, 1);
+            let length = sortedArray[0].length;
+
+            for (let j = i + 1; j < sortedArray.length; j++) {
+                if (sortedArray[j].length > length) {
+                    let equalElements = sortedArray.slice(0, j).sort();
+                    for (let el of equalElements) {
+                        newArr.push(el);
+                    }
+                    sortedArray.splice(0, (j));
+                }
+            }
+
         }
-        console.log(equalElements);
+
+
+
     }
 
+    // for (let i = 0; i < sortedArray.length; i++) {
+    //     if (sortedArray[i].length == sortedArray[i + 1]) {
+    //         let tempArray = sortedArray.slice(i, i + 2);
+    //         tempArray.sort((a, b) => a.localeCompare(b));
+    //         console.log(tempArray.join(' '));
 
-    console.log(sortedArray.join(' '));
+    //     }
+    // }
+
+    // sortedArray.sort((a, b) => a.localeCompare(b));
+
+
+
+
+    console.log(newArr.join(' '));
 
 }
 
 // sortArrayTwoCriterias(["alpha", "beta", "gamma"]);
 // sortArrayTwoCriterias(["Isacc", "Theodor", "Jack", "Harrison", "George"]);
-sortArrayTwoCriterias(["test", "Deny", "omen", "Default"]);
+sortArrayTwoCriterias(["test", "Deny", "omen", "Default", "Asfault"]);
