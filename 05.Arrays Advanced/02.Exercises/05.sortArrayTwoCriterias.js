@@ -15,7 +15,7 @@ function sortArrayTwoCriterias(inputArray) {
             if (sortedArray[index].length == sortedArray[j].length) { // current element and first origin  element have same length
                 equalElements.push(sortedArray[j]); // push the current element into the temp array
             } else {
-                break; 
+                break;
             }
         }
 
