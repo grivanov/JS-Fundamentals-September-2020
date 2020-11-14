@@ -5,7 +5,6 @@ function convert(inputJSON) {
         console.log(`${key}: ${value}`);
 
     }
-
 }
 
 let input = '{"name": "George", "age": 40, "town": "Sofia"}';
