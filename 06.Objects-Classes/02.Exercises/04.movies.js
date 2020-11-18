@@ -1,60 +1,29 @@
 function movies(input) {
 
-    class Movie {
-        constructor(name, date, director) {
-            this.name = name;
-            this.date = date;
-            this.director = director;
-
-        }
-
-        setName(inp) {
-            this.name = inp;
-        }
-
-        setDate(inp) {
-            this.date = inp;
-        }
-
-        setDirector(inp) {
-            this.director = inp;
-        }
-    }
-
     for (let i = 0; i < input.length; i++) {
-        let newMovie = new Movie();
+        let newMovie = {};
 
         if (input[i].includes('addMovie')) {
             let [, movieName] = input[i].split('addMovie ');
-            newMovie.setName(movieName);
-            //newMovie.name = movieName;
+            newMovie.name = movieName;
 
             for (let j = 0; j < input.length; j++) {
                 if (input[j].includes(movieName)) {
                     if (input[j].includes('directedBy')) {
                         let [, value] = input[j].split(' directedBy ');
-                        newMovie.setDirector(value);
-                        //newMovie.director = value;
+                        newMovie.director = value;
                     } else if (input[j].includes('onDate')) {
                         let [, value] = input[j].split(' onDate ');
-                        newMovie.setDate(value);
-                        // newMovie.date = value;
+                        newMovie.date = value;
                     }
                 }
             }
 
-            let filledName = newMovie['name'] !== 'undefined';
-            let filledDirector = newMovie['director'] !== 'undefined';
-            let filledDate = newMovie['date'] !== 'undefined';
-
-            if (filledName && filledDirector && filledDate) {
+            if (newMovie.name && newMovie.director && newMovie.date) {
                 console.log(JSON.stringify(newMovie));
             }
-
         }
-
     }
-
 }
 
 movies([
